@@ -1,0 +1,137 @@
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #161616;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-nav span:first-child {
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.header-nav div {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 3px solid #BB000E;
+}
+
+.header-nav p {
+    margin: 0;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-right: 15px;
+}
+
+.logout {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #BB000E;
+}
+
+.logout i,
+.logout svg {
+    margin-right: 5px;
+}
+
+.sidebar-nav {
+    background-color: #BB000E;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.sidebar-nav.collapsed {
+    width: 50px;
+}
+
+.sidebar-nav.expanded {
+    width: 218px;
+}
+
+.navigation-list,
+.activity-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 16px;
+}
+
+.activities-container {
+    background-color: #2c2c2c;
+    width: 208px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.activities-title {
+    margin-top: 10px;
+    font-size: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+
+.navigation-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.navigation-list li .icon {
+
+    color: #FFFFFF;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    margin-left: 0;
+}
+
+.navigation-list li .text {
+    font-size: 16px;
+    color: #FFFFFF;
+    opacity: 0;
+    margin-left: 0;
+    transition: opacity 0.3s ease, margin-left 0.3s ease;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.sidebar-nav.expanded .navigation-list li .text {
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.activity-list {
+    font-size: 12px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-nav.expanded .activity-list {
+    opacity: 1;
+}
+
+.navigation-list li.active::after {
+    content: '→';
+    color: #FFFFFF;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+}
+
+.sidebar-nav.collapsed .navigation-list li .text,
+.sidebar-nav.collapsed .navigation-list li::after {
+    display: none;
+}
