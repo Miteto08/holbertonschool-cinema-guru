@@ -1,37 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
-// Placeholders pour les composants à venir
-const Dashboard = () => <div>Dashboard</div>;
-const Authentication = () => <div>Authentication</div>;
+import Authentication from './routes/auth/Authentication';
+import axios from 'axios';
+import Dashboard from './routes/dashboard/Dashboard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userUsername, setUserUsername] = useState("");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
-    if (!accessToken) return;
-    fetch('/api/auth/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.username) {
-          setIsLoggedIn(true);
-          setUserUsername(data.username);
+
+    if (accessToken) {
+      axios.post('http://localhost:8000/api/auth/', {}, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
         }
       })
-      .catch(() => { });
+        .then(res => {
+          setIsLoggedIn(true);
+          setUsername(res.data.username);
+        })
+        .catch(err => {
+          console.error('Authentication failed:', err);
+        });
+    }
   }, []);
 
   return (
     <div className="App">
-      {isLoggedIn ? <Dashboard /> : <Authentication />}
+      {isLoggedIn ? (
+        <Dashboard
+          userUsername={username}
+          setIsLoggedIn={setIsLoggedIn}
+        />
+      ) : (
+        <Authentication
+          setIsLoggedIn={setIsLoggedIn}
+          setUserUsername={setUsername}
+        />
+      )}
     </div>
   );
 }

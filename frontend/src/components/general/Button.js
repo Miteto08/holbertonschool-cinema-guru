@@ -1,21 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './general.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Button = ({
+function Button({
     label,
-    className = '',
+    className,
     onClick,
     icon
-}) => {
+}) {
     return (
         <button
             className={`button ${className}`}
             onClick={onClick}
         >
-            {icon && <span className="button-icon">{icon}</span>}
+            {icon && <FontAwesomeIcon icon={icon} className="button-icon" />}
             {label}
         </button>
     );
+}
+
+Button.propTypes = {
+    label: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    icon: PropTypes.object
 };
 
 export default Button;

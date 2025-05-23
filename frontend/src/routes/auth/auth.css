@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Container for the authentication */
 .authentication-container {
     width: 450px;
     height: 361px;
@@ -10,7 +9,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* Buttons to switch between "Sign In" and "Sign Up" */
 .button-group {
     display: flex;
     justify-content: space-between;
@@ -25,17 +23,14 @@
     font-size: 16px;
 }
 
-/* Active styles */
 .btn-active {
     background-color: #e31c25;
 }
 
-/* Inactive styles */
 .btn-inactive {
     background-color: #BB000E;
 }
 
-/* Login and registration form */
 .login-form,
 .register-form {
     padding: 20px;
@@ -46,7 +41,6 @@
 
 .login-form button,
 .register-form button {
-    flex: 1;
     justify-items: end;
 }
 
@@ -57,7 +51,6 @@
     margin-bottom: 20px;
 }
 
-/* Submit button */
 .login-button,
 .register-button {
     width: 104px;
@@ -73,6 +66,7 @@
     justify-content: space-around;
     align-items: center;
     transition: background-color 0.3s;
+    align-self: flex-end;
 }
 
 .login-button:hover,

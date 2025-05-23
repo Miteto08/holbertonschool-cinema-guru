@@ -1,35 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './general.css';
 
-const SelectInput = ({
+function SelectInput({
     label,
     options,
-    className = '',
+    className,
     value,
     setValue
-}) => {
+}) {
     const handleSelect = (e) => {
         setValue(e.target.value);
     };
 
     return (
-        <div className="input-container">
-            {label && <label className="input-label">{label}</label>}
-            <div className="input-wrapper">
-                <select
-                    className={`input-field ${className}`}
-                    value={value}
-                    onChange={handleSelect}
-                >
-                    {options.map((option, index) => (
-                        <option key={index} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            </div>
+        <div className={`select-input ${className}`}>
+            <label>{label}</label>
+            <select
+                className="select"
+                value={value}
+                onChange={handleSelect}
+            >
+                {options.map((option, index) => (
+                    <option key={index} value={option.value}>
+                        {option.text}
+                    </option>
+                ))}
+            </select>
         </div>
     );
+}
+
+SelectInput.propTypes = {
+    label: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            value: PropTypes.string.isRequired,
+            text: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    className: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired
 };
 
 export default SelectInput;
