@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './dashboard.css';
 import Header from '../../components/navigation/Header';
-// import Sidebar from '../../components/navigation/Sidebar';
-// import HomePage from './HomePage';
-// import Favorites from './Favorites';
-// import WatchLater from './WatchLater';
+import SideBar from '../../components/navigation/SideBar';
+import HomePage from './HomePage';
+import Favorites from './Favorites';
+import WatchLater from './WatchLater';
 
 function Dashboard({ userUsername, setIsLoggedIn }) {
     return (
@@ -16,7 +16,7 @@ function Dashboard({ userUsername, setIsLoggedIn }) {
                     <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
                 </div>
                 <div className="sidebar">
-                    <Sidebar userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+                    <SideBar userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
                 </div>
                 <div className="main-content">
                     <Routes>
